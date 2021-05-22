@@ -29,3 +29,8 @@ const newPerson = returnPerson(person);
 const { latlng:{ lat, lng }} = newPerson;
 
 console.log(lat, lng);
+
+const personajes = ['Goku', 'Veggeta', 'Trunks'];
+
+const [ , element2, element3 ] = personajes;
+console.log(element2, element3);

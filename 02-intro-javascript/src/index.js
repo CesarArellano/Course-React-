@@ -1,31 +1,7 @@
-// Desestructuración.
+import { heroes } from './data/heroes'
 
-const person = {
-  name: 'Tony',
-  age: 45,
-  key: 'IronMan'
-};
+const getHeroeId = (id) => heroes.find((heroe) => heroe.id === id);
+const getHeroeOwner = (owner) => heroes.filter((heroe) => heroe.owner === owner);
 
-console.log(person);
-
-const { name:name2, age, key } = person;  
-
-console.log(name2, age, key);
-
-const returnPerson = ({name, age, range = 'Cap'}) => {
-  return {
-    name,
-    age,
-    range,
-    latlng: {
-      lat: 14.21323,
-      lng: 54.2123
-    }
-  };
-};
-
-const newPerson = returnPerson(person);
-
-const { latlng:{ lat, lng }} = newPerson;
-
-console.log(lat, lng);
+console.log(getHeroeId(2));
+console.log(getHeroeOwner('DC'));
