@@ -5,4 +5,4 @@ import './index.css';
 
 const divApp = document.querySelector('#app');
 
-ReactDOM.render(<PrimeraApp />, divApp);
+ReactDOM.render(<PrimeraApp saludo="Hola, soy César"/>, divApp);
