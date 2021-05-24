@@ -7,4 +7,4 @@ import './index.css';
 
 const divApp = document.querySelector('#app');
 
-ReactDOM.render(<CounterApp value={1111} />, divApp);
+ReactDOM.render(<CounterApp value={10} />, divApp);
