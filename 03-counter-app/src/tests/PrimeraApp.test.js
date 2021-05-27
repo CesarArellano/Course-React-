@@ -31,4 +31,5 @@ describe('Tests in <PrimerApp/>', () => {
     const paragraph = wrapper.find('p').text();
     expect(paragraph).toBe(subtitle);
   });
+  
 });
