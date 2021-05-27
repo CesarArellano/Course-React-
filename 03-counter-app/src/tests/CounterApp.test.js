@@ -37,6 +37,17 @@ describe('Tests with CounterApp Component', () => {
     expect(counterText).toBe('0'); // En teoría debería fallar si tuvieras un número diferente por defecto porque se alteró su valor en la anterior prueba (porque el wrapper está de manera global).
   });
 
-  
-  
-})
+  test('Must be reset the counter with reset button', () => {
+    const counter = 105;
+    const wrapper = shallow(
+      <CounterApp
+        value={ counter }
+      />
+    );
+    wrapper.find('button').at(0).simulate('click');
+    wrapper.find('button').at(1).simulate('click');
+    wrapper.find('button').at(2).simulate('click');
+    const counterText = wrapper.find('h2').text().trim();
+    expect(counterText).toBe('105');
+  });
+});
