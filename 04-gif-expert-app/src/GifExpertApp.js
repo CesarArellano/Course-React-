@@ -6,8 +6,7 @@ const GifExpertApp = () => {
   const [categories, setCategories] = useState(['One Punch']);
   
   const handleApp = () => {
-    //setCategories([...categories, 'Pokemon']);
-    setCategories(cats => [...cats, 'Pokemon']);
+    setCategories(cats => ['Pokemon', ...cats]);
   };
 
   return (
@@ -16,16 +15,14 @@ const GifExpertApp = () => {
       <AddCategory setCategories={ setCategories } />
       <hr />
       <button onClick={ handleApp }>Agregar</button>
-      <ol>
-        {
-          categories.map((category, i) => ( // Normalmente el i, no será necesario.
-            <GifGrid 
-              key={ i }
-              category={ category } 
-            />
-          ))
-        }
-      </ol>
+      {
+        categories.map((category, i) => ( // Normalmente el i, no será necesario.
+          <GifGrid 
+            key={ i }
+            category={ category } 
+          />
+        ))
+      }
     </>
   );
 }
