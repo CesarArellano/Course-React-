@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing <GifExpertApp> Component Must display correctly this component. 1`] = `
+<Fragment>
+  <h2>
+    GifExpertApp
+  </h2>
+  <AddCategory
+    setCategories={[Function]}
+  />
+  <hr />
+  <button
+    onClick={[Function]}
+  >
+    Agregar
+  </button>
+</Fragment>
+`;
