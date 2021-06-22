@@ -1,0 +1,17 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.greenTab,
+.blueTab {
+  display: inline-block;
+  background: green;
+  padding: 25px 50px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.blueTab {
+  background: #0084ff;
+}
