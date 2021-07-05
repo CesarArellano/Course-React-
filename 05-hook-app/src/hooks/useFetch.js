@@ -25,6 +25,9 @@ export const useFetch = (url) => {
           } else {
             console.log('setState no se llamó.');
           }
+      })
+      .catch(() => {
+        setState({ data: null, loading: false, error: "It couldn't load data" });
       });
   }, [url]);
 

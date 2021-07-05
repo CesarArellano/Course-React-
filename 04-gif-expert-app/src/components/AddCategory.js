@@ -1,6 +1,8 @@
 import { useState } from "react"
 import PropTypes from 'prop-types';
 
+import '../styles/AddCategory.style.css';
+
 export const AddCategory = ( { setCategories } ) => {
   const [inputValue, setInputValue] = useState('');
   
@@ -10,7 +12,6 @@ export const AddCategory = ( { setCategories } ) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('HandleSubmit');
     if ( inputValue.trim().length > 2 ) {
       setCategories( cats => [ inputValue, ...cats, ] );
       setInputValue('');
@@ -19,9 +20,9 @@ export const AddCategory = ( { setCategories } ) => {
 
   return (
     <form onSubmit={ handleSubmit }>
-      <p>{ inputValue }</p>
       <input
         type="text"
+        placeholder="Find by name"
         value={ inputValue }
         onChange = { handleInputChange }
       />
