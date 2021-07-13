@@ -7,6 +7,7 @@ import { types } from '../../types/types';
 import '@testing-library/jest-dom';
 
 describe('Testing with <Navbar />', () => {
+  
   const historyMock = {
     push: jest.fn(),
     location: {},
