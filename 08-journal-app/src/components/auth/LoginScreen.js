@@ -4,6 +4,14 @@ import { Link } from 'react-router-dom'
 export const LoginScreen = () => {
   return (
     <>
+      <div className="center-box">
+        <img 
+          src="https://image.flaticon.com/icons/png/512/3235/3235042.png"
+          alt="Journal App Icon" 
+          title="App Icon"
+          className="img-icon"
+        />
+      </div>
       <h3 className="auth__title">Login</h3>
       <form>
         <input
