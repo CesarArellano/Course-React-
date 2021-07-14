@@ -16,5 +16,42 @@
 }
 
 .auth__title {
-  color: $primary;
+  font-size: 26px;
+  color: darken($color: $primary, $amount: 20);
+  margin-bottom: 20px;
+}
+
+.auth__input {
+  color: $dark-grey;
+  border: 0;
+  border-bottom: 2px solid $light-grey;
+  font-size: 16px;
+  margin-bottom: 10px;
+  height: 20px;
+  width: 100%;
+  transition: border-bottom 0.4s ease;
+
+  &:focus {
+    outline: none;
+    border-bottom: 2px solid $primary;
+  }
+}
+
+.auth__social-networks {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px 0;
+  width: 100%;
+}
+
+.auth__alert-error {
+  background: red;
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  padding: 5px;
 }

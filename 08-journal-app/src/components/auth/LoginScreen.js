@@ -10,22 +10,28 @@ export const LoginScreen = () => {
           type="text"
           placeholder="Email"
           name="email"
+          autoComplete="off"
+          className="auth__input"
         />
 
         <input 
           type="password"
           placeholder="Password"
           name="password"
+          className="auth__input"
         />
 
-        <button
-          type="submit"
+        <div className="center-box">
+          <button
+            type="submit"
+            className="btn btn-primary"
 
-        >
-          Login
-        </button>
+          >
+            Login
+          </button>
+        </div>
         <hr />
-        <div>
+        <div className="auth__social-networks">
           <p>Login with social networks</p>
           <div className="google-btn">
               <div className="google-icon-wrapper">
