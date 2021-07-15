@@ -1,0 +1,23 @@
+.nothing__main-content {
+  align-items: center;
+  background: $primary;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  
+
+  p {
+    text-align: center;
+  }
+
+  i {
+    transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+  i:hover {
+    color:yellow;
+    transform: rotate(360deg);
+  }
+}
