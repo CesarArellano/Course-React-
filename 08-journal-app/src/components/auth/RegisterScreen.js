@@ -46,7 +46,7 @@ export const RegisterScreen = () => {
         <div className="center-box">
           <button
             type="submit"
-            className="btn btn-primary"
+            className="btn btn-primary mb-5"
           >
             Register
           </button>

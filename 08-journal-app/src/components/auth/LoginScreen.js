@@ -32,8 +32,7 @@ export const LoginScreen = () => {
         <div className="center-box">
           <button
             type="submit"
-            className="btn btn-primary"
-
+            className="btn btn-primary mb-5"
           >
             Login
           </button>
