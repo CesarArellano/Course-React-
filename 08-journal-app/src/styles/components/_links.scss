@@ -1,0 +1,9 @@
+.link {
+  color: $dark-grey;
+  text-decoration: none;
+  transition: 1s ease;
+  
+  &:hover {
+    border-bottom: 1px solid gray;
+  }
+}
