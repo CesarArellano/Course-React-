@@ -18,7 +18,7 @@ export const LoginScreen = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(login(12345, 'Mauricio'))
+    dispatch( login(12345, 'Mauricio') );
   }
 
   return (
