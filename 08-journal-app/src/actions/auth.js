@@ -8,9 +8,10 @@ export const startLoginEmailPassword = (email, password) => {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then( ({ user }) => {
         dispatch(login(user.uid, user.displayName));
-        dispatch(uiFinishLoading());
+        
       })
       .catch( console.log );
+    dispatch(uiFinishLoading());
   }
 }
 
@@ -44,3 +45,14 @@ export const login = (uid, displayName) => ({
     displayName
   }
 })
+
+export const startLogout = () => {
+  return async (dispatch) => {
+    await firebase.auth().signOut();
+    dispatch( logout() );
+  }
+}
+
+export const logout = () => ({
+  type: types.logout
+});
