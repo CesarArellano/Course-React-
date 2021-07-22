@@ -43,3 +43,10 @@ main {
   justify-content: center;
   display: flex;
 }
+
+.center-complete-box {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
