@@ -21,13 +21,13 @@ const initialState = {
 
 export const notesReducer = ( state = initialState, action ) => {
   switch ( action.type ) {
-    case types.ad:
+    case types.notesActive:
       return {
-        uid: action.payload.uid,
-        name: action.payload.displayName
-      };
-    case types.logout:
-      return {};
+        ...state,
+        active: {
+          ...action.payload
+        }
+      }
     default:
       return state;
   }
