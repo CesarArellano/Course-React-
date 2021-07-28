@@ -1,28 +1,34 @@
 import React from 'react'
+import moment from 'moment';
 
-export const JournalEntry = () => {
+export const JournalEntry = ({ id, date, title, body, url }) => {
+  const noteDate = moment(date);
+  console.log(noteDate);
+
   return (
     <div className="journal__entry pointer">
-      <div 
+      {
+        url &&
+        <div 
         className="journal__entry-picture"
         style={{
           backgroundSize: 'cover',
-          background: 'url(https://t.ipadizate.es/2020/06/macOS-Big-Sur-Vector-Wave-Wallpaper-iDownloadBlog.jpg)'
-          
+          background: `url( ${ url } )`  
         }}
-      >
-      </div>
+        >
+        </div>
+      }
 
       <div className="journal__entry-body">
-        <p className="journal__entry-title">A new day</p>
+        <p className="journal__entry-title">{ title }</p>
         <p className="journal__entry-content">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          { body }
         </p>
       </div>
 
       <div className="journal__entry-date-box">
-        <span>Monday</span>
-        <h4>28</h4>
+        <span>{ noteDate.format('dddd')}</span>
+        <h4>{ noteDate.format('Do') }</h4>
       </div>
     </div>
   )
