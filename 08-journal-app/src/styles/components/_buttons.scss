@@ -77,3 +77,11 @@
     background: $button-active-blue;
   }
 }
+
+.btn-danger {
+  background: red;
+  transition: background .3 ease;
+  &:hover {
+    background: darken($color: red, $amount: 10);
+  }
+}
