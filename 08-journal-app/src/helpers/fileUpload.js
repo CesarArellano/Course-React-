@@ -23,6 +23,7 @@ export const fileUpload = async ( file ) => {
     }
 
   } catch (err) {
-    Swal.fire('Error', err, 'error');
+    return null;
+    // Swal.fire('Error', err, 'error');
   }
 }
