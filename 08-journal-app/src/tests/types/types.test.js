@@ -1,7 +1,8 @@
-import { types } from "../types/types";
+import { types } from "../../types/types";
 
 describe('Testing types.js', () => {
   test('types object should be the same as the original', () => {
+
     const originalTypes = {
       login: '[Auth] Login',
       logout: '[Auth] Logout',
@@ -21,6 +22,6 @@ describe('Testing types.js', () => {
     };
     
     expect(types).toEqual(originalTypes);
-  })
+  });
   
 })
