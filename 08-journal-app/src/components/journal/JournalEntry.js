@@ -13,7 +13,7 @@ export const JournalEntry = ({ id, date, title, body, url }) => {
 
   return (
     <div 
-      className="journal__entry pointer"
+      className="journal__entry pointer animate__animated animate__fadeIn animate__faster"
       onClick={ handleEntryClick }
     >
       {
@@ -21,9 +21,10 @@ export const JournalEntry = ({ id, date, title, body, url }) => {
         <div 
         className="journal__entry-picture"
         style={{
-          backgroundSize: 'cover',
+          backgroundSize: '100px',
+          backgroundRepeat: 'not-repeat',
           backgroundPosition: 'center',
-          background: `url( ${ url } )`  
+          backgroundImage: `url( ${ url } )`  
         }}
         >
         </div>

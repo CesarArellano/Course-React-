@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { activeNote, deleteNote } from '../../actions/notes';
+import { activeNote, startDeleting } from '../../actions/notes';
 import { useForm } from '../../hooks/useForm';
 import { NotesAppBar } from './NotesAppBar'
 
@@ -25,7 +25,7 @@ export const NoteScreen = () => {
   }, [dispatch, formValues]);
 
   const handleDeleteNote = () => {
-    dispatch( deleteNote(id) );
+    dispatch( startDeleting(id) );
   }
 
   return (
