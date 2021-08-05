@@ -1,6 +1,6 @@
 import configureStore from 'redux-mock-store' //ES6 modules
 import thunk from "redux-thunk";
-import { login, logout, startLoginEmailPassword } from '../../actions/auth';
+import { login, logout, startLoginEmailPassword, startLogout } from '../../actions/auth';
 import { types } from '../../types/types';
 
 const middlewares = [thunk]
@@ -35,6 +35,39 @@ describe('Testing with Auth actions', () => {
       type: types.logout
     })
 
-  })
+  });
+
+  test('Must make the startLogout', async () => {
+    await store.dispatch( startLogout() );
+    const actions = store.getActions();
+    
+    expect( actions[0] ).toEqual({
+      type: types.logout
+    });
+
+    expect( actions[1] ).toEqual({
+      type: types.notesLogoutCleaning
+    });
+  });
+
+  test('Must make the startLogin', async () => {
+    await store.dispatch( startLoginEmailPassword('raywayday@gmail.com', '12345678') );
+    const actions = store.getActions();
+    expect( actions[0] ).toEqual({
+      type: types.uiStartLoading
+    });
+
+    expect( actions[1] ).toEqual({
+      type: types.login,
+      payload: {
+        uid: 'C3Oou4JepGUVc7BrOy0OrSZLRps1',
+        displayName: null
+      }
+    });
+
+    expect( actions[2] ).toEqual({
+      type: types.uiFinishLoading
+    });
+  }); 
   
 })

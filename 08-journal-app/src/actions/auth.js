@@ -5,20 +5,19 @@ import { noteLogout } from './notes';
 import { uiFinishLoading, uiStartLoading } from './ui';
 
 export const startLoginEmailPassword = (email, password) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(uiStartLoading());
-    firebase.auth().signInWithEmailAndPassword(email, password)
-      .then( ({ user }) => {
-        dispatch(login(user.uid, user.displayName));
-        
-      })
-      .catch( e => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: e.message,
-        });
+    try {
+      const { user } = await firebase.auth().signInWithEmailAndPassword(email, password)
+      dispatch(login(user.uid, user.displayName));
+    } catch (e) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: e.message,
       });
+    }
+    
     dispatch( uiFinishLoading() );
   }
 }
