@@ -12,8 +12,24 @@ const firebaseConfig = {
   measurementId: "G-HMFZEMSLHV"
 };
 
+const firebaseConfigTesting = {
+  apiKey: "AIzaSyBVe0OMJ_Z6B5yE0mc0RI8SX8oQGWQ049g",
+  authDomain: "flutter-varios-1f0b2.firebaseapp.com",
+  databaseURL: "https://flutter-varios-1f0b2-default-rtdb.firebaseio.com",
+  projectId: "flutter-varios-1f0b2",
+  storageBucket: "flutter-varios-1f0b2.appspot.com",
+  messagingSenderId: "482875858274",
+  appId: "1:482875858274:web:1c107aa35b5b55fa29a03b",
+  measurementId: "G-02E0L9PEYV"
+};
+
+if(process.env.NODE_ENV === 'test' ) {
+  // testing
+  firebase.initializeApp(firebaseConfigTesting);
+} else {
+  firebase.initializeApp(firebaseConfig);
+}
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
