@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing in <Sidebar /> should show the component correctly 1`] = `
+<aside
+  className="journal__sidebar"
+>
+  <div
+    className="journal__sidebar-navbar"
+  >
+    <h3
+      className="mt-5"
+    >
+      <i
+        className="fa fa-moon"
+      />
+      <span>
+        César
+      </span>
+    </h3>
+    <button
+      className="btn"
+      onClick={[Function]}
+    >
+      Logout
+    </button>
+  </div>
+  <div
+    className="journal__new-entry"
+    onClick={[Function]}
+  >
+    <i
+      className="fa fa-calendar-plus fa-5x"
+    />
+    <p>
+       New Entry
+    </p>
+  </div>
+  <div
+    className="journal__entries"
+  />
+</aside>
+`;

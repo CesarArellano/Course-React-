@@ -5,9 +5,9 @@ import { mount } from "enzyme";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import configureStore from "redux-mock-store";
-import { LoginScreen } from "../../components/auth/LoginScreen";
+import { LoginScreen } from "../../../components/auth/LoginScreen";
 import { MemoryRouter } from 'react-router-dom';
-import { startGoogleLogin, startLoginEmailPassword } from '../../actions/auth';
+import { startGoogleLogin, startLoginEmailPassword } from '../../../actions/auth';
 
 jest.mock('../../actions/auth', () => ({
   startGoogleLogin: jest.fn(),
