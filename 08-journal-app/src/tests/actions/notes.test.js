@@ -1,7 +1,7 @@
 /**
  * @jest-environment node
 */
-
+import '@testing-library/jest-dom';
 import configureStore from 'redux-mock-store' //ES6 modules
 import thunk from 'redux-thunk';
 import { startLoadingNotes, startNewNote, startSaveNote, startUploading } from '../../actions/notes';

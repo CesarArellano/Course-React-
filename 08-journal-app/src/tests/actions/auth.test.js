@@ -68,6 +68,7 @@ describe('Testing with Auth actions', () => {
     expect( actions[2] ).toEqual({
       type: types.uiFinishLoading
     });
-  }); 
+  });
+  
   
 })
