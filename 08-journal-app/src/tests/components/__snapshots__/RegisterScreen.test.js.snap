@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing in <RegisterScreen /> should show the component correctly 1`] = `
+Array [
+  <div
+    className="center-box"
+  >
+    <img
+      alt="Journal App Icon"
+      className="img-icon"
+      src="https://image.flaticon.com/icons/png/512/3235/3235042.png"
+      title="App Icon"
+    />
+  </div>,
+  <h3
+    className="auth__title"
+  >
+    Register
+  </h3>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      autoComplete="off"
+      className="auth__input"
+      name="name"
+      onChange={[Function]}
+      placeholder="Name"
+      required={true}
+      type="text"
+      value="César"
+    />
+    <input
+      autoComplete="off"
+      className="auth__input"
+      name="email"
+      onChange={[Function]}
+      placeholder="Email"
+      type="text"
+      value="cesarmauricio.arellano@gmail.com"
+    />
+    <input
+      className="auth__input"
+      name="password"
+      onChange={[Function]}
+      placeholder="Password"
+      type="password"
+      value="12345678"
+    />
+    <input
+      className="auth__input"
+      name="password2"
+      onChange={[Function]}
+      placeholder="Confirm password"
+      type="password"
+      value="12345678"
+    />
+    <div
+      className="center-box"
+    >
+      <button
+        className="btn btn-primary mb-5"
+        type="submit"
+      >
+        Register
+      </button>
+    </div>
+    <a
+      className="link"
+      href="/auth/login"
+      onClick={[Function]}
+    >
+      Already registered?
+    </a>
+  </form>,
+]
+`;

@@ -52,7 +52,7 @@ describe('Testing with LoginScreen', () => {
     wrapper.find('form').prop('onSubmit')(
       { preventDefault(){} }
     );
-    expect(startLoginEmailPassword).toHaveBeenCalled();
+    expect(startLoginEmailPassword).toHaveBeenCalledWith('cesar@gmail.com', '12345');
   })
   
   
