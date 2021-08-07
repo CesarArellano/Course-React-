@@ -20,6 +20,11 @@ Array [
   <form
     onSubmit={[Function]}
   >
+    <div
+      className="auth__alert-error animate__animated animate__shakeX"
+    >
+      Email is not valid
+    </div>
     <input
       autoComplete="off"
       className="auth__input"

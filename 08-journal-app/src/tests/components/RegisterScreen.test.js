@@ -12,7 +12,7 @@ const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 const initState = {
   ui: {
-    msgError: null,
+    msgError: 'Email is not valid',
     loading: false
   }
 };
@@ -48,11 +48,16 @@ describe('Testing in <RegisterScreen />', () => {
     });
 
     const actions = store.getActions();
-    
+
     expect(actions[0]).toEqual({
       type: types.uiSetError,
       payload: 'Email is not valid'
     });
+  })
+  
+  test('should show the alert box with the msg', () => {
+    expect( wrapper.find('.auth__alert-error').exists() ).toBe( true );
+    expect( wrapper.find('.auth__alert-error').text().trim() ).toBe( initState.ui.msgError );
   })
   
   
