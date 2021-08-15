@@ -7,7 +7,7 @@ export const Navbar = () => {
         César
       </span>
       <button className="btn btn-outline-danger">
-        <span class="textButton">Salir</span>
+        <span className="textButton">Salir</span>
         <i className="fas fa-sign-out-alt"></i>
       </button>
     </div>
