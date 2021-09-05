@@ -6,11 +6,10 @@ import {
   Redirect
 } from "react-router-dom";
 
+// Components
 import { LoginScreen } from '../components/auth/LoginScreen';
 import { CalendarScreen } from '../components/calendar/CalendarScreen';
 
-  // exact /login => LoginScreen
-  // exact /  => Calendar
 export const AppRouter = () => {
   return (
     <Router>
