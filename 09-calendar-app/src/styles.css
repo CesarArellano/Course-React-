@@ -76,3 +76,14 @@ h1 {
 .react-datetime-picker__inputGroup input[type="datetime-local"] {
   visibility: unset !important;
 }
+
+/* FABS */
+.fab {
+  border-radius: 100%;
+  bottom: 25px;
+  font-size: 30px;
+  padding: 20px;
+  position: fixed;
+  right: 25px;
+  z-index: 100;
+}
