@@ -18,6 +18,10 @@ h1 {
   padding: 0px 20px;
 }
 
+.modalTitle {
+  padding: 0px 15px;
+}
+
 /* Modal */
 .ReactModalPortal > div{
   opacity: 0;
@@ -27,7 +31,7 @@ h1 {
   align-items: center;
   display: flex;
   justify-content: center;
-  transition: opacity .3s ease-out;
+  transition: opacity .2s ease-out;
   z-index: 999;
 }
 
@@ -58,5 +62,4 @@ h1 {
   max-height: 600px;
   max-width: 500px;
   outline: none;
-  padding: 10px;
 }
