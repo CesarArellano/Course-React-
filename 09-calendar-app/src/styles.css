@@ -72,3 +72,7 @@ h1 {
 .react-datetime-picker__wrapper {
   border: 0px solid gray !important;
 }
+
+.react-datetime-picker__inputGroup input[type="datetime-local"] {
+  visibility: unset !important;
+}

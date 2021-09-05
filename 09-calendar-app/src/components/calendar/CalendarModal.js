@@ -56,6 +56,7 @@ export const CalendarModal = () => {
             <DateTimePicker
               onChange={ handleStartDateChange }
               className="form-control"
+              maxDate={ dateEnd }
               value={ dateStart }
             />
           </div>
@@ -65,6 +66,8 @@ export const CalendarModal = () => {
             <DateTimePicker
               onChange={ handleEndDateChange }
               className="form-control"
+              minDate={ dateStart }
+              required={ true }
               value={ dateEnd }
             />
           </div>
