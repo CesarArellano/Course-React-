@@ -11,8 +11,9 @@ import { esMessages } from '../../helpers/calendar-messages';
 import { CalendarEvent } from './CalendarEvent';
 import { CalendarModal } from './CalendarModal';
 import { uiOpenModal } from '../../actions/ui';
-import { eventSetActive } from '../../actions/events';
+import { eventClearActiveEvent, eventSetActive } from '../../actions/events';
 import { AddNewFab } from '../ui/AddNewFab';
+import { DeletingEventFab } from '../ui/DeletingEventFab';
 
 moment.locale('es-mx');
 
@@ -22,7 +23,7 @@ export const CalendarScreen = () => {
   
   const [lastView, setLastView] = useState( localStorage.getItem( 'lastView') || 'month' );
   const dispatch = useDispatch();
-  const { events } = useSelector( state => state.calendar );
+  const { events, actionEvent } = useSelector( state => state.calendar );
   
   const onDoubleClick = (e) => {
     dispatch( uiOpenModal() )
@@ -30,12 +31,15 @@ export const CalendarScreen = () => {
 
   const onSelectEvent = (e) => {
     dispatch( eventSetActive(e) )
-    dispatch( uiOpenModal() )
   }
   
   const onViewChange = (e) => {
     setLastView(e);
     localStorage.setItem('lastView', e);
+  }
+
+  const onSelectedSlot = (e) => {
+    dispatch( eventClearActiveEvent() );
   }
 
   const eventStyleGetter = ( event, start, end, isSelected ) => {
@@ -68,10 +72,15 @@ export const CalendarScreen = () => {
           onView={ onViewChange }
           view={ lastView }
           onDoubleClickEvent={ onDoubleClick }
+          onSelectSlot={ onSelectedSlot }
+          selectable={ true }
           components={ {
             event: CalendarEvent
           }}
         />
+        {
+          (actionEvent ) && <DeletingEventFab />
+        }
         <AddNewFab />
         <CalendarModal />
       </div>

@@ -87,3 +87,11 @@ h1 {
   right: 25px;
   z-index: 100;
 }
+
+.fab-danger {
+  bottom: 25px;
+  padding: 10px;
+  position: fixed;
+  left: 25px;
+  z-index: 100;
+}
