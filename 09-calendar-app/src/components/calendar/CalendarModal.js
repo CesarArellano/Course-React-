@@ -7,7 +7,7 @@ import Modal from 'react-modal';
 import Swal from 'sweetalert2';
 
 import { uiCloseModal } from '../../actions/ui';
-import { eventAddNew, eventClearActiveEvent } from '../../actions/events';
+import { eventAddNew, eventClearActiveEvent, eventUpdate } from '../../actions/events';
 
 const customStyles = {
   content: {
@@ -105,14 +105,19 @@ export const CalendarModal = () => {
     }
 
     // TODO: Save in DataBase
-    dispatch( eventAddNew({
-      id: new Date().getTime(),
-      user: {
-        _id: 'ABC',
-        name: 'César'
-      },
-      ...formValues,
-    }) );
+    if( actionEvent ) { // Update
+      dispatch( eventUpdate( formValues ) );
+    } else {
+      dispatch( eventAddNew({
+        id: new Date().getTime(),
+        user: {
+          _id: 'ABC',
+          name: 'César'
+        },
+        ...formValues,
+      }) );
+    }
+    
     setFormValues( initEvent );
     setTitleValid( true );
     closeModal()
