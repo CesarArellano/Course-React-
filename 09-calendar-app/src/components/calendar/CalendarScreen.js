@@ -25,12 +25,12 @@ export const CalendarScreen = () => {
   const dispatch = useDispatch();
   const { events, actionEvent } = useSelector( state => state.calendar );
   
-  const onDoubleClick = (e) => {
+  const onDoubleClick = () => {
     dispatch( uiOpenModal() )
   }
 
   const onSelectEvent = (e) => {
-    dispatch( eventSetActive(e) )
+    dispatch( eventSetA<ctive(e) )
   }
   
   const onViewChange = (e) => {
@@ -38,7 +38,7 @@ export const CalendarScreen = () => {
     localStorage.setItem('lastView', e);
   }
 
-  const onSelectedSlot = (e) => {
+  const onSelectedSlot = () => {
     dispatch( eventClearActiveEvent() );
   }
 
