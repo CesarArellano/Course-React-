@@ -30,7 +30,7 @@ export const CalendarScreen = () => {
   }
 
   const onSelectEvent = (e) => {
-    dispatch( eventSetA<ctive(e) )
+    dispatch( eventSetActive(e) )
   }
   
   const onViewChange = (e) => {
