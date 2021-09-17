@@ -8,12 +8,8 @@ const app = express();
 app.use( express.static('public') );
 
 // Routes
-// app.get('/', (req, res) => {
-//   console.log('Se solicitó el /');
-//   res.json({
-//     ok: true
-//   })
-// });
+app.use('/api/auth', require('./routes/auth'));
+// TODO: CRUD: Events
 
 // Listen to requests
 app.listen( process.env.PORT || 3000, () => {
