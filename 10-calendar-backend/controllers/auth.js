@@ -1,16 +1,23 @@
 const { response } = require('express');
+const { validationResult } = require('express-validator');
+
+const errorJson = ( res, errors ) => {
+  return res.status(400).json({
+    ok: false,
+    errors: errors.mapped()
+  });
+}
 
 const createUser = ( req, res = response ) => {
   const { name, email, password } = req.body;
 
-  if( name.length < 5 ) {
-    return res.status(400).json({
-      ok: false,
-      msg: 'The name must have at least 5 letters'
-    })
+  const errors = validationResult( req );
+  
+  if( !errors.isEmpty() ) {
+    return errorJson(res, errors);
   }
 
-  res.json({
+  res.status(201).json({
     ok: true,
     msg: 'register',
     name,
@@ -21,6 +28,13 @@ const createUser = ( req, res = response ) => {
 
 const userLogin = ( req, res = response ) => {
   const { email, password } = req.body;
+
+  const errors = validationResult( req );
+  
+  if( !errors.isEmpty() ) {
+    return errorJson(res, errors);
+  }
+  
   res.json({
     ok: true,
     msg: 'login',
