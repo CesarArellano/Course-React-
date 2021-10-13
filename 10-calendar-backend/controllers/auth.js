@@ -13,9 +13,7 @@ const createUser = ( req, res = response ) => {
 
   const errors = validationResult( req );
   
-  if( !errors.isEmpty() ) {
-    return errorJson(res, errors);
-  }
+  if( !errors.isEmpty() ) return errorJson(res, errors);
 
   res.status(201).json({
     ok: true,
@@ -31,10 +29,8 @@ const userLogin = ( req, res = response ) => {
 
   const errors = validationResult( req );
   
-  if( !errors.isEmpty() ) {
-    return errorJson(res, errors);
-  }
-  
+  if( !errors.isEmpty() ) return errorJson(res, errors);
+
   res.json({
     ok: true,
     msg: 'login',
