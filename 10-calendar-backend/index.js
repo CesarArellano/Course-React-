@@ -1,8 +1,12 @@
 const express = require('express');
 require('dotenv').config(); // To use .env file
+const { dbConnection } = require('./database/config');
 
 // Create express server
 const app = express();
+
+//Base de datos 
+dbConnection();
 
 // Public path
 app.use( express.static('public') );
