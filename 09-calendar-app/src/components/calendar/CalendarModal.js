@@ -7,7 +7,7 @@ import Modal from 'react-modal';
 import Swal from 'sweetalert2';
 
 import { uiCloseModal } from '../../actions/ui';
-import { eventAddNew, eventClearActiveEvent, eventUpdate } from '../../actions/events';
+import { eventClearActiveEvent, eventStartAddNew, eventUpdate } from '../../actions/events';
 
 const customStyles = {
   content: {
@@ -109,14 +109,7 @@ export const CalendarModal = () => {
     if( actionEvent ) { // Update
       dispatch( eventUpdate( formValues ) );
     } else {
-      dispatch( eventAddNew({
-        id: new Date().getTime(),
-        user: {
-          _id: 'ABC',
-          name: 'César'
-        },
-        ...formValues,
-      }) );
+      dispatch( eventStartAddNew( formValues ) );
     }
     
     setFormValues( initEvent );
