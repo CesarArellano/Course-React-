@@ -44,7 +44,7 @@ export const startChecking = () => {
     try {
       const resp = await fetchWithToken('auth/renew');
       const decodedData = await resp.json();
-      console.log(decodedData);
+
       if( decodedData.ok ) {
         localStorage.setItem( 'token', decodedData.token );
         localStorage.setItem( 'token-init-date', new Date().getTime() );
@@ -53,7 +53,6 @@ export const startChecking = () => {
           name: decodedData.name,
         }));
       } else {
-        Swal.fire('Error', decodedData.msg, 'error');
         dispatch( checkingFinish() );
       }
     } catch(e) {
