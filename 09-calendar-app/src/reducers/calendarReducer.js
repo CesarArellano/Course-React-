@@ -29,7 +29,7 @@ export const calendarReducer = ( state = initialState, action ) => {
     case types.eventAddNew:
       return {
         ...state,
-        events: [ ...state.events, ...action.payload ]
+        events: [ ...state.events, action.payload ]
       };
     
     case types.eventSetActive:
