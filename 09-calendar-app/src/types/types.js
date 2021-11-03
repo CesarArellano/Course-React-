@@ -5,8 +5,6 @@ export const types = {
   authLogin: '[AUTH] Login',
   authLogout: '[AUTH] Logout',
 
-
-
   uiOpenModal: '[UI] Open modal',
   uiCloseModal: '[UI] Close modal',
 
@@ -18,4 +16,5 @@ export const types = {
   eventClearActiveEvent: '[EVENT] Clear active event',
   eventUpdate: '[EVENT] Event updated',
   eventDelete: '[EVENT] Event deleted',
-};  
+
+};
