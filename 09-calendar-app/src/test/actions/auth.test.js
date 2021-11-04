@@ -4,8 +4,9 @@ import Swal from 'sweetalert2';
 
 import '@testing-library/jest-dom';
 
-import { startLogin } from '../../actions/auth';
+import { startLogin, startRegister } from '../../actions/auth';
 import { types } from '../../types/types';
+import * as fetchModule from '../../helpers/fetch';
 
 jest.mock('sweetalert2', () => ({
   fire: jest.fn()
@@ -27,7 +28,7 @@ describe('Testing with auth actions', () => {
     jest.clearAllMocks();
   });
 
-  test('startLogin correctly', async () => {
+  test('startLogin correct', async () => {
     await store.dispatch( startLogin('cesarmauricio.arellano@gmail.com', '123456') );
     const actions = store.getActions();
     expect( actions[0] ).toEqual({
@@ -55,5 +56,30 @@ describe('Testing with auth actions', () => {
     expect( Swal.fire ).toHaveBeenCalledWith('Error', 'El usuario no existe con ese correo.', 'error');
   });
   
-  
+  test('startRegister correct', async () => {
+    fetchModule.fetchWithoutToken = jest.fn(() => ({
+      json() {
+        return {
+          ok: true,
+          uid: '123',
+          name: 'juan',
+          token: 'ABC123'
+        }
+      }
+    }));
+
+    await store.dispatch( startRegister('test2@test.com', '123456', 'test'));
+    const actions = store.getActions();
+    
+    expect( actions[0] ).toEqual({
+      type: types.authLogin,
+      payload: {
+        uid: '123',
+        name: 'juan'
+      }
+    });
+
+    expect( localStorage.setItem ).toHaveBeenCalledWith('token', 'ABC123');
+    expect( localStorage.setItem ).toHaveBeenCalledWith('token-init-date', expect.any(Number));
+  });  
 })
