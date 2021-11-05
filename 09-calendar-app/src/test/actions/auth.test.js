@@ -25,7 +25,7 @@ Storage.prototype.setItem = jest.fn();
 describe('Testing with auth actions', () => {
 
   beforeEach(() => {
-    store =  mockStore( iniState );
+    store = mockStore( iniState );
     jest.clearAllMocks();
   });
 
