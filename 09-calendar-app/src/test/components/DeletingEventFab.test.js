@@ -19,6 +19,7 @@ const mockStore = configureStore( middlewares );
 const initState = { };
 
 const store = mockStore( initState );
+store.dispatch = jest.fn();
 
 const wrapper = mount(
   <Provider store={ store }>
@@ -32,9 +33,9 @@ describe('Testing with DeletingEventFab Component', () => {
     expect( wrapper ).toMatchSnapshot();
   });
   
-  // test('It should call the eventStartDelete function when doing click', () => {
-  //   wrapper.find('button').prop('onClick')();
-  //   expect( eventStartDelete ).toHaveBeenCalled();
-  // });
+  test('It should call the eventStartDelete function when doing click', () => {
+    wrapper.find('button').prop('onClick')();
+    expect( eventStartDelete ).toHaveBeenCalled();
+  });
   
 });

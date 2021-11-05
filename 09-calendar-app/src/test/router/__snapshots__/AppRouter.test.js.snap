@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing in <AppRouter /> It should show waiting message 1`] = `
+<div
+  className="center-complete-box"
+>
+  <div
+    className="utils__spinner"
+  />
+</div>
+`;
