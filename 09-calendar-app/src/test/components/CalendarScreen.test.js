@@ -5,6 +5,7 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { mount } from 'enzyme'
 import { Provider } from 'react-redux';
+import { act } from '@testing-library/react';
 
 import { CalendarScreen } from '../../components/calendar/CalendarScreen';
 import { esMessages } from '../../helpers/calendar-messages';
@@ -67,8 +68,12 @@ describe('Testing with <CalendarScreen />', () => {
     calendar.prop('onSelectEvent')({ start: 'hola' });
     expect( eventSetActive ).toHaveBeenCalledWith({ start: 'hola' });
     
-    calendar.prop('onView')('week');
-    expect( localStorage.setItem ).toHaveBeenCalledWith('lastView', 'week')
+    // Como se está modificando el estado usamos el act.
+    act(() => {
+      calendar.prop('onView')('week');
+      expect( localStorage.setItem ).toHaveBeenCalledWith('lastView', 'week');
+    });
+
   });
   
 });
