@@ -7,10 +7,13 @@ import { mount } from 'enzyme'
 import { Provider } from 'react-redux';
 
 import { CalendarScreen } from '../../components/calendar/CalendarScreen';
+import { esMessages } from '../../helpers/calendar-messages';
+import { uiOpenModal } from '../../actions/ui';
+import { eventSetActive } from '../../actions/events';
 
-jest.mock('../../actions/auth', () => ({
-  startLogin: jest.fn(),
-  startRegister: jest.fn()
+jest.mock('../../actions/events', () => ({
+  eventSetActive: jest.fn(),
+  eventStartLoading: jest.fn(),
 }));
 
 jest.mock('sweetalert2', () => ({
@@ -44,11 +47,28 @@ const wrapper = mount(
   </Provider>
 );
 
+Storage.prototype.setItem = jest.fn();
 
 describe('Testing with <CalendarScreen />', () => {
   
   test('should show correctly', () => {
     expect(wrapper).toMatchSnapshot();
+  });
+
+  test('tests with calendar interactions', () => {
+    const calendar = wrapper.find('Calendar');
+    
+    const calendarMessages = calendar.prop('messages');
+    expect( calendarMessages ).toEqual( esMessages );
+
+    calendar.prop('onDoubleClickEvent')();
+    expect( store.dispatch ).toHaveBeenCalledWith( uiOpenModal() );
+
+    calendar.prop('onSelectEvent')({ start: 'hola' });
+    expect( eventSetActive ).toHaveBeenCalledWith({ start: 'hola' });
+    
+    calendar.prop('onView')('week');
+    expect( localStorage.setItem ).toHaveBeenCalledWith('lastView', 'week')
   });
   
 });
