@@ -8,10 +8,12 @@ import { Provider } from 'react-redux';
 
 import { CalendarModal } from '../../components/calendar/CalendarModal';
 import moment from 'moment';
+import { eventStartUpdate, eventClearActiveEvent, eventStartAddNew } from '../../actions/events';
 
 jest.mock('../../actions/events', () => ({
-  eventSetActive: jest.fn(),
-  eventStartLoading: jest.fn(),
+  eventStartUpdate: jest.fn(),
+  eventClearActiveEvent: jest.fn(),
+  eventStartAddNew: jest.fn()
 }));
 
 jest.mock('sweetalert2', () => ({
@@ -31,7 +33,7 @@ const initState = {
   },
   calendar: {
     events: [],
-    activeEvent: {
+    actionEvent: {
       title: 'Hello World',
       notes: 'Some notes',
       start: now.toDate(),
@@ -57,8 +59,32 @@ const wrapper = mount(
 Storage.prototype.setItem = jest.fn();
 
 describe('Testing with <CalendarModal />', () => {
+  
+  beforeEach(() => {
+    jest.clearAllMocks(); // Best Practice
+  });
+
   test('Should show the modal', () => {
     expect( wrapper.find('Modal').prop('isOpen') ).toBe(true);
+  });
+
+  test('should call update and close modal action ', () => {
+
+    wrapper.find('form').simulate('submit', {
+      preventDefault(){}
+    });
+
+    expect( eventStartUpdate ).toHaveBeenCalledWith( initState.calendar.actionEvent );
+    expect( eventClearActiveEvent ).toHaveBeenCalled();
+  });
+  
+  test('', () => {
+    wrapper.find('form').simulate('submit', {
+      preventDefault(){}
+    });
+
+    expect( wrapper.find('input[name="title"]').hasClass('is-invalid') ).toBe(true);
   })
+  
   
 });
