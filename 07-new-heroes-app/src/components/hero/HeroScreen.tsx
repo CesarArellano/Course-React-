@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { Navigate, useParams, useNavigate } from 'react-router-dom';
 import { getHeroById } from '../../selectors/getHeroById';
 
@@ -24,7 +24,7 @@ export const HeroScreen = () => {
     <div className="row mt-5">
       <div className="col-4">
         <img 
-          className='img-thumbnail'
+          className='img-thumbnail animate__animated animate__fadeInLeft'
           src={ imagePath }
           alt={ superhero }
         />
