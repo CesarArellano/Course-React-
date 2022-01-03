@@ -1,11 +1,13 @@
+import { useMemo, useState } from 'react';
 import { Navigate, useParams, useNavigate } from 'react-router-dom';
 import { getHeroById } from '../../selectors/getHeroById';
 
 export const HeroScreen = () => {
+
   const navigate = useNavigate();
   const { heroId } = useParams();
 
-  const hero = getHeroById(heroId!);
+  const hero = useMemo( () => getHeroById(heroId!), [heroId] ); // Sólo se llamará si cambia la dependencia heroId.
 
   if( !hero ) {
     return <Navigate to="/" />;
