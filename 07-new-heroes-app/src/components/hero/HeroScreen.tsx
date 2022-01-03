@@ -36,7 +36,7 @@ export const HeroScreen = () => {
           <li className="list-group-item"> <b>Publisher:</b> { publisher } </li>
           <li className="list-group-item"> <b>First appearance:</b> { first_appearance } </li>
         </ul>
-        <h5>Characters</h5>
+        <h5 className='mt-3'>Characters</h5>
         <p>{ characters }</p>
         <button
           className='btn btn-outline-info'
