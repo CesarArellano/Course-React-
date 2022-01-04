@@ -9,5 +9,5 @@ export const getHeroesByName = ( name: string ): HeroDataProps[] => {
     return [];
   }
 
-  return heroes.filter(( hero ) => hero.superhero.toLowerCase().includes(name) );
+  return heroes.filter(( hero ) => hero.superhero.toLowerCase().includes( name.toLowerCase() ) );
 }

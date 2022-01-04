@@ -4,7 +4,7 @@ import { AuthContext } from '../../auth/authContext';
 import { types } from '../../types/types';
 
 export const LoginScreen = () => {
-  
+
   const { dispatch } = useContext(AuthContext)
   const navigate = useNavigate();
 
@@ -17,7 +17,9 @@ export const LoginScreen = () => {
 
     dispatch( action );
 
-    navigate('/marvel', {
+    const lastPath = localStorage.getItem('lastPath') || '/marvel';
+
+    navigate(lastPath, {
       replace: true,
     })
   }
