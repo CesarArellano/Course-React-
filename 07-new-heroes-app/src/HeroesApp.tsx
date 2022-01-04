@@ -1,5 +1,5 @@
-import React, { useEffect, useReducer } from 'react'
-import { AuthContext, AuthState } from './auth/authContext';
+import { useEffect, useReducer } from 'react'
+import { AuthContext } from './auth/authContext';
 import { authReducer } from './auth/authReducer'
 import { AppRouter } from './routers/AppRouter'
 
@@ -14,7 +14,7 @@ export const HeroesApp = () => {
     if( !user ) return;
 
     localStorage.setItem('user', JSON.stringify( user ));
-    
+
   }, [user])
 
   return (
