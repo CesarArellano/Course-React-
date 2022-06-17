@@ -1,33 +1,29 @@
 
 import { Link as RouterLink } from 'react-router-dom'
-import { Button, Grid, Link, TextField, Typography } from '@mui/material'
-import { Google } from '@mui/icons-material'
+import { Button, Grid, InputAdornment, Link, TextField, Typography } from '@mui/material'
+import { Email, Google, Lock } from '@mui/icons-material'
+import { AuthLayout } from '../layout/AuthLayout'
 
 export const LoginPage = () => {
   return (
-    <Grid 
-      container
-      spacing={ 0 }
-      direction="column"
-      alignItems="center"
-      justifyContent="center"
-      sx={{ minHeight: '100vh', backgroundColor: 'primary.main', padding: 4}}
+    <AuthLayout
+      title='Login'
     >
-      <Grid
-        item
-        className='box-shadow'
-        xs={ 3 }
-        sx={{ backgroundColor: 'white', padding: 4, botderRadius: 10 }}
-      >
-        <Typography variant="h5" sx={{ mb: 2 }}>Login</Typography>
-        <form>
+      <form>
           <Grid container>
-            <Grid item xs={ 12 }>
+            <Grid item xs={ 12 } sx={{ mt: 1 }}>
               <TextField 
                 label="Correo"
                 type="email"
                 placeholder="correo@gmail.com"
                 fullWidth
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Email />
+                    </InputAdornment>
+                  ),
+                }}
               />
             </Grid>
             <Grid item xs={ 12 } sx={{ mt: 2 }}>
@@ -36,6 +32,13 @@ export const LoginPage = () => {
                 type="password"
                 placeholder="********"
                 fullWidth
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Lock />
+                    </InputAdornment>
+                  ),
+                }}
               />
             </Grid>
             <Grid container spacing={ 1.5 }  sx={{ mt: 2 }}>
@@ -64,7 +67,6 @@ export const LoginPage = () => {
             </Grid>
           </Grid>
         </form>
-      </Grid>
-    </Grid>
+    </AuthLayout>
   )
 }
