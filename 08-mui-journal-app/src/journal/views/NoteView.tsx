@@ -1,6 +1,6 @@
-import React from 'react'
 import { Grid, Typography, Button, TextField } from '@mui/material';
 import { SaveOutlined } from '@mui/icons-material';
+import { ImageGallery } from '../components';
 
 export const NoteView = () => {
   return (
@@ -41,7 +41,7 @@ export const NoteView = () => {
         />
       </Grid>
       <Grid container>
-        {/* Image Gallery */}
+        <ImageGallery />
       </Grid>
     </Grid>
   )
