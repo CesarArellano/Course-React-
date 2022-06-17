@@ -2,8 +2,8 @@ import { Grid, Typography } from '@mui/material'
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 
 interface Props {
-  children: ReactJSXElement,
-  title: string
+  children: ReactJSXElement;
+  title: string;
 }
 
 export const AuthLayout = ({ children, title }: Props) => {
