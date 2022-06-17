@@ -1,5 +1,5 @@
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace'
-import { NavBar } from '../components'
+import { NavBar, SideBar } from '../components'
 import { Box } from '@mui/system'
 
 interface Props {
@@ -14,7 +14,7 @@ export const JournalLayout = ({ children }: Props) => {
       {/* Navbar */}
       <NavBar drawerWidth={ drawerWidth } />
       {/* Sidebar */}
-
+      <SideBar drawerWidth={ drawerWidth } />
       <Box
         component='main'
         sx={{ flexGrow: 1, p: 3 }}
