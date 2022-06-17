@@ -1,6 +1,7 @@
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace'
 import { NavBar, SideBar } from '../components'
 import { Box } from '@mui/system'
+import { Toolbar } from '@mui/material';
 
 interface Props {
   children: ReactJSXElement;
@@ -20,6 +21,7 @@ export const JournalLayout = ({ children }: Props) => {
         sx={{ flexGrow: 1, p: 3 }}
       >
         {/* Toolbar */}
+        <Toolbar />
         { children }
       </Box>
     </Box>
