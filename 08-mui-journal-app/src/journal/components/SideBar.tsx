@@ -1,6 +1,7 @@
 import { TurnedInNot } from '@mui/icons-material'
 import { Box, Divider, Drawer, Grid, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material'
 import React from 'react'
+import { purpleTheme } from '../../theme/purpleTheme'
 
 interface Props {
   drawerWidth: number
@@ -21,7 +22,9 @@ export const SideBar = ({ drawerWidth }: Props) => {
           '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }
         }}
       >
-        <Toolbar>
+        <Toolbar
+          style={{ backgroundColor: purpleTheme.palette.primary.main, color: 'white'}}
+        >
           <Typography variant="h6" noWrap component="div">César Arellano</Typography>
         </Toolbar>
         <Divider />
