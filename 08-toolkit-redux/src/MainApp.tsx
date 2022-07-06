@@ -1,11 +1,11 @@
 import { Provider } from 'react-redux'
 import { store } from './store/store'
-import { CounterComponent } from './components/CounterComponent';
+import { PokemonApp } from './components/PokemonApp';
 
 export const MainApp = () => {
   return (
     <Provider store={ store }>
-      <CounterComponent />
+      <PokemonApp />
     </Provider>
   )
 }
