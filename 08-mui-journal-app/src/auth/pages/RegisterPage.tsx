@@ -4,7 +4,7 @@ import { Button, Grid, InputAdornment, Link, TextField } from '@mui/material'
 import { AuthLayout } from '../layout/AuthLayout'
 import { AccountCircle, Email, Lock } from '@mui/icons-material'
 import { useForm } from '../../hooks'
-import { SyntheticEvent } from 'react';
+import { SyntheticEvent, useState } from 'react';
 
 // export interface RegisterFormValidationsProps {
 //   displayName?: (string | ((value: string) => boolean))[];
@@ -25,11 +25,13 @@ const formValidations = {
 }
 
 export const RegisterPage = () => {
-  const { formState, handleInputChange, formValidation } = useForm(initialData, formValidations)
+  const [ formSubmitted, setFormSubmitted ] = useState(false);
+  const { formState, handleInputChange, formValidation ,isFormValid } = useForm(initialData, formValidations)
   const { displayName, email, password } = formState;
 
   const onSubmit = (e:SyntheticEvent) => {
     e.preventDefault();
+    setFormSubmitted(true)
     console.log(displayName,email,password);
     
   }
@@ -60,8 +62,8 @@ export const RegisterPage = () => {
                   </InputAdornment>
                 ),
               }}
-              error
-              helperText="El nombre es obligatorio"
+              error={ !!displayNameValid && formSubmitted }
+              helperText={ displayNameValid }
             />
           </Grid>
           <Grid item xs={ 12 } sx={{ mt: 2 }}>
@@ -79,6 +81,8 @@ export const RegisterPage = () => {
                   </InputAdornment>
                 ),
               }}
+              error={ !!emailValid && formSubmitted }
+              helperText={ emailValid }
             />
           </Grid>
           <Grid item xs={ 12 } sx={{ mt: 2 }}>
@@ -96,6 +100,8 @@ export const RegisterPage = () => {
                   </InputAdornment>
                 ),
               }}
+              error={ !!passwordValid && formSubmitted }
+              helperText={ passwordValid }
             />
           </Grid>
           <Grid item xs={ 12 } sx={{ mt: 2 }}>
