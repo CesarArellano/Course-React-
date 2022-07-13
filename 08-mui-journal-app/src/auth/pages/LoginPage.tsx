@@ -4,11 +4,10 @@ import { Alert, Button, Grid, InputAdornment, Link, TextField, Typography } from
 import { Email, Google, Lock } from '@mui/icons-material'
 import { AuthLayout } from '../layout/AuthLayout'
 import { useForm } from '../../hooks';
-import { SyntheticEvent, useState } from 'react';
+import { SyntheticEvent, useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { checkingAuthentication, startGoogleSignIn } from '../../store/auth';
-import { useMemo } from 'react';
-import { startSignInWithEmailPassword } from '../../store/auth/thunks';
+import { startGoogleSignIn } from '../../store/auth';
+import { startLoginWithEmailPassword } from '../../store/auth/thunks';
 
 const initialData = {
   email: 'cesarmauricio.arellano@gmail.com',
@@ -36,7 +35,7 @@ export const LoginPage = () => {
     setFormSubmitted(true)
     if( !isFormValid ) return;
     console.log(email,password);
-    dispatch( startSignInWithEmailPassword(formState) )
+    dispatch( startLoginWithEmailPassword(formState) )
   }
 
   const onGoogleSignIn = () => {

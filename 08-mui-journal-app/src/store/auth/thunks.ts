@@ -18,7 +18,7 @@ export const startGoogleSignIn = () => {
   }
 }
 
-export const startSignInWithEmailPassword = (formValues: AuthProps) => {
+export const startLoginWithEmailPassword = (formValues: AuthProps) => {
   return async( dispatch: Dispatch<AnyAction>) => {
     dispatch( checkingCredentials() );
     const result = await signInWithEmailPassword(formValues);
