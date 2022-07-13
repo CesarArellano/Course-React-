@@ -15,13 +15,13 @@ export const LoginPage = () => {
   const isAuthenticating = useMemo(() => status === 'checking', [status]);
 
   const dispatch = useDispatch<any>();
-  const { values, handleInputChange } = useForm({
+  const { formState, handleInputChange } = useForm({
     email: 'cesarmauricio.arellano@gmail.com',
     password: '12345'
   })
 
-  const { email, password } = values;
-
+  const { email, password } = formState;
+  
   const onSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
     console.log(email,password);
