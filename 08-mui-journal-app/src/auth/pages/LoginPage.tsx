@@ -5,10 +5,15 @@ import { Email, Google, Lock } from '@mui/icons-material'
 import { AuthLayout } from '../layout/AuthLayout'
 import { useForm } from '../../hooks';
 import { SyntheticEvent } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { checkingAuthentication, startGoogleSignIn } from '../../store/auth';
+import { useMemo } from 'react';
 
 export const LoginPage = () => {
+  const { status } = useSelector<any, any>(state => state.auth);
+
+  const isAuthenticating = useMemo(() => status === 'checking', [status]);
+
   const dispatch = useDispatch<any>();
   const { values, handleInputChange } = useForm({
     email: 'cesarmauricio.arellano@gmail.com',
@@ -70,13 +75,13 @@ export const LoginPage = () => {
             </Grid>
             <Grid container spacing={ 1.5 }  sx={{ mt: 2 }}>
               <Grid item xs={ 12 } sm={ 6 }>
-                <Button variant="contained" fullWidth onClick={ onGoogleSignIn }>
+                <Button disabled={ isAuthenticating } variant="contained" fullWidth onClick={ onGoogleSignIn }>
                   <Google/>
                   <Typography sx={{ ml: 1 }}>Google</Typography>
                 </Button>
               </Grid>
               <Grid item xs={ 12 } sm={ 6 }>
-                <Button type='submit' variant="contained" fullWidth>
+                <Button disabled={ isAuthenticating } type='submit' variant="contained" fullWidth>
                   Iniciar sesión
                 </Button>
               </Grid>
