@@ -1,31 +1,42 @@
 
 import { Link as RouterLink } from 'react-router-dom'
-import { Button, Grid, InputAdornment, Link, TextField, Typography } from '@mui/material'
+import { Alert, Button, Grid, InputAdornment, Link, TextField, Typography } from '@mui/material'
 import { Email, Google, Lock } from '@mui/icons-material'
 import { AuthLayout } from '../layout/AuthLayout'
 import { useForm } from '../../hooks';
-import { SyntheticEvent } from 'react';
+import { SyntheticEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { checkingAuthentication, startGoogleSignIn } from '../../store/auth';
 import { useMemo } from 'react';
+import { startSignInWithEmailPassword } from '../../store/auth/thunks';
+
+const initialData = {
+  email: 'cesarmauricio.arellano@gmail.com',
+  password: '12345'
+};
+
+const formValidations = {
+  email: [( value:string ) => value.includes('@'), 'El campo correo debe tener un @.'],
+  password: [( value:string ) => value.length >= 6, 'El campo correo debe tener más de 6 caracteres.'],
+};
 
 export const LoginPage = () => {
-  const { status } = useSelector<any, any>(state => state.auth);
-
+  const [ formSubmitted, setFormSubmitted ] = useState(false);
+  const { status, errorMessage } = useSelector<any, any>(state => state.auth);
   const isAuthenticating = useMemo(() => status === 'checking', [status]);
-
+  const { formState, handleInputChange, formValidation, isFormValid  } = useForm(initialData, formValidations)
   const dispatch = useDispatch<any>();
-  const { formState, handleInputChange } = useForm({
-    email: 'cesarmauricio.arellano@gmail.com',
-    password: '12345'
-  })
 
   const { email, password } = formState;
-  
+  const { emailValid } = formValidation;
+
   const onSubmit = (event: SyntheticEvent) => {
+    console.log('onSubmit');
     event.preventDefault();
+    setFormSubmitted(true)
+    if( !isFormValid ) return;
     console.log(email,password);
-    dispatch( checkingAuthentication(email, password) )
+    dispatch( startSignInWithEmailPassword(formState) )
   }
 
   const onGoogleSignIn = () => {
@@ -54,6 +65,8 @@ export const LoginPage = () => {
                     </InputAdornment>
                   ),
                 }}
+                error={ !!emailValid && formSubmitted }
+                helperText={ emailValid }
               />
             </Grid>
             <Grid item xs={ 12 } sx={{ mt: 2 }}>
@@ -74,6 +87,9 @@ export const LoginPage = () => {
               />
             </Grid>
             <Grid container spacing={ 1.5 }  sx={{ mt: 2 }}>
+              <Grid item xs={ 12 } display={ !!errorMessage ? '' : 'none' }>
+                <Alert severity='error'>{ errorMessage }</Alert>
+              </Grid>
               <Grid item xs={ 12 } sm={ 6 }>
                 <Button disabled={ isAuthenticating } variant="contained" fullWidth onClick={ onGoogleSignIn }>
                   <Google/>
