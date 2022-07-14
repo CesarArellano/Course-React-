@@ -10,8 +10,8 @@ import { startGoogleSignIn } from '../../store/auth';
 import { startLoginWithEmailPassword } from '../../store/auth/thunks';
 
 const initialData = {
-  email: 'cesarmauricio.arellano@gmail.com',
-  password: '12345'
+  email: '',
+  password: ''
 };
 
 const formValidations = {
@@ -30,16 +30,13 @@ export const LoginPage = () => {
   const { emailValid } = formValidation;
 
   const onSubmit = (event: SyntheticEvent) => {
-    console.log('onSubmit');
     event.preventDefault();
     setFormSubmitted(true)
     if( !isFormValid ) return;
-    console.log(email,password);
     dispatch( startLoginWithEmailPassword(formState) )
   }
 
   const onGoogleSignIn = () => {
-    console.log('onGoogleSignIn');
     dispatch( startGoogleSignIn() )
   }
 

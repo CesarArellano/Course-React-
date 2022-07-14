@@ -42,8 +42,7 @@ export const registerWithEmailAndPassword = async ({ displayName, email, passwor
   try {
     const resp = await createUserWithEmailAndPassword(FirebaseAuth, email, password);
     const { uid, photoURL } = resp.user;
-    console.log(resp);
-
+    
     await updateProfile(resp.user, { displayName });
     
     return {

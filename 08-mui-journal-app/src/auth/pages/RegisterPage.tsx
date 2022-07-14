@@ -16,8 +16,8 @@ import { startCreatingUserWithEmailAndPassword } from '../../store/auth'
 
 const initialData = {
   displayName: '',
-  email: 'cesarmauricio.arellano@gmail.com',
-  password: '123456',
+  email: '',
+  password: '',
 };
 
 const formValidations = {
@@ -38,9 +38,7 @@ export const RegisterPage = () => {
   const onSubmit = (e:SyntheticEvent) => {
     e.preventDefault();
     setFormSubmitted(true)
-    console.log(displayName,email,password, 1);
     if( !isFormValid ) return;
-    console.log(displayName,email,password, 2);
     dispatch( startCreatingUserWithEmailAndPassword(formState))
   }
   

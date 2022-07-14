@@ -5,10 +5,11 @@ import { NoteProps } from '../store/journal';
 export const loadNotes = async ( uid = ''):Promise<Array<NoteProps>>  => {
   const collectionRef = collection( FirebaseDB, `${ uid }/journal/notes`);
   const docs = await getDocs(collectionRef)
-  console.log(docs);
   const notes: Array<NoteProps> = [];
+
   docs.forEach( doc => {
     notes.push({ id: doc.id, ...doc.data() } as NoteProps);
   });
+  
   return notes;
 }

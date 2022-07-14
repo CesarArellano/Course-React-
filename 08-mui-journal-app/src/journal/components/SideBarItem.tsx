@@ -12,11 +12,12 @@ interface Props {
 export const SideBarItem = ({ note }: Props ) => {
   const dispatch = useDispatch<any>();
   const { title = '', body } = note;
+  
   const newTitle = useMemo(() => {
     return title.length > 17
       ? title.substring(0, 17) + '...'
       : title;
-  }, []);
+  }, [title]);
   
   const onActiveNote = () => {
     dispatch( startSetActiveNote(note) )

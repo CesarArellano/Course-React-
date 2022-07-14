@@ -7,22 +7,27 @@ export const useForm = <T extends Object>( initialState: T, formValidations:any 
 
   useEffect(() => {
     createValidations();
-  }, [formState])
+  }, [formState]);
+
+  // Reinitialize
+  useEffect(() => {
+    setFormState(initialState)
+  }, [initialState])
   
-  const isFormValid = useMemo(() => {
-    for( const formValue of Object.keys(formValidation) ) {
+  const isFormValid = useMemo(() => {    
+    for( const formValue of Object.keys(formValidation) ) {      
       if( formValidation[formValue] != null ) return false;
     }
     return true;
-  }, [formState])
+  }, [formState, formValidation])
 
   const createValidations = () => {
     const formCheckedValues:any = {};
     for( const formField of Object.keys(formValidations) ) {
       const [ fn, errorMsg ] = formValidations[formField];
-      formCheckedValues[`${ formField }Valid`] = fn(formState[formField as keyof T]) ? null : errorMsg;
+      formCheckedValues[`${ formField }Valid`] = fn(formState[formField as keyof T]) ? null : errorMsg;      
     }
-    setFormValidation( formCheckedValues);
+    setFormValidation( formCheckedValues );
   }
 
   const reset = () => {
