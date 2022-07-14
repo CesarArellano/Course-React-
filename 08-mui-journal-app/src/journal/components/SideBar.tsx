@@ -2,12 +2,14 @@ import { TurnedInNot } from '@mui/icons-material'
 import { Box, Divider, Drawer, Grid, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material'
 import React from 'react'
 import { purpleTheme } from '../../theme/purpleTheme'
+import { useSelector } from 'react-redux';
 
 interface Props {
   drawerWidth: number
 }
 
 export const SideBar = ({ drawerWidth }: Props) => {
+  const { displayName } = useSelector<any,any>(state => state.auth);
   return (
     <Box
       component="nav"
@@ -25,7 +27,7 @@ export const SideBar = ({ drawerWidth }: Props) => {
         <Toolbar
           style={{ backgroundColor: purpleTheme.palette.primary.main, color: 'white'}}
         >
-          <Typography variant="h6" noWrap component="div">César Arellano</Typography>
+          <Typography variant="h6" noWrap component="div">{ displayName }</Typography>
         </Toolbar>
         <Divider />
         <List>

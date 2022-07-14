@@ -1,5 +1,5 @@
 import { AnyAction, Dispatch } from '@reduxjs/toolkit';
-import { signInWithGoogle, registerWithEmailAndPassword, AuthProps, signInWithEmailPassword } from '../../firebase/providers';
+import { signInWithGoogle, registerWithEmailAndPassword, AuthProps, signInWithEmailPassword, logoutFirebase } from '../../firebase/providers';
 import { checkingCredentials, logout, login } from './';
 
 export const checkingAuthentication = (email: string, password: string) => {
@@ -36,5 +36,12 @@ export const startCreatingUserWithEmailAndPassword = (formValues: AuthProps) => 
     if( !result.ok ) return dispatch(logout( result.errorMessage ));
     delete result.ok; 
     dispatch(login( result ))
+  }
+}
+
+export const startLogout = () => {
+  return async( dispatch: Dispatch<AnyAction>) => {
+    await logoutFirebase();
+    dispatch(logout(null))
   }
 }
