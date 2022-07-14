@@ -1,14 +1,15 @@
-import { TurnedInNot } from '@mui/icons-material'
-import { Box, Divider, Drawer, Grid, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material'
-import React from 'react'
+import { Box, Divider, Drawer, List, Toolbar, Typography } from '@mui/material'
 import { purpleTheme } from '../../theme/purpleTheme'
 import { useSelector } from 'react-redux';
+import { NoteProps } from '../../store/journal';
+import { SideBarItem } from './SideBarItem';
 
 interface Props {
   drawerWidth: number
 }
 
 export const SideBar = ({ drawerWidth }: Props) => {
+  const { notes } = useSelector<any, any>(state => state.journal);
   const { displayName } = useSelector<any,any>(state => state.auth);
   return (
     <Box
@@ -32,18 +33,8 @@ export const SideBar = ({ drawerWidth }: Props) => {
         <Divider />
         <List>
           {
-            ['Enero', 'Febrero', 'Marzo', 'Abril'].map(text => (
-              <ListItem key={ text } disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    <TurnedInNot />
-                  </ListItemIcon>
-                  <Grid container>
-                    <ListItemText primary={ text } />
-                    <ListItemText secondary={ 'Et ullamco id ut aliquip velit duis quis aliquip id nostrud cillum aliqua eu voluptate.' } />
-                  </Grid>
-                </ListItemButton>
-              </ListItem>
+            notes.map( ( note:NoteProps ) => (
+              <SideBarItem key={ note.id } note={ note }/>
             ))
           }
         </List>
